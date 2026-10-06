@@ -1,0 +1,159 @@
+:root {
+  --bg-primary: #07090e;
+  --bg-secondary: #0d111a;
+  --bg-card: #121824;
+  --bg-card-hover: #182030;
+  --border-color: #1e293b;
+  --border-glow: rgba(0, 242, 254, 0.15);
+  
+  --accent-cyan: #00f2fe;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  
+  --status-normal: #10b981;
+  --status-low: #3b82f6;
+  --status-medium: #f59e0b;
+  --status-high: #f97316;
+  --status-critical: #ef4444;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: #273549;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4d66;
+}
+
+/* Glassmorphism Card Base */
+.glass-card {
+  background: rgba(18, 24, 36, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover {
+  border-color: rgba(0, 242, 254, 0.3);
+}
+
+/* Glow Effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+}
+.glow-red {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Pulse animation */
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulse-active {
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+/* Terminal Styling */
+.terminal-window {
+  font-family: var(--font-mono);
+  background-color: #05070a;
+  border: 1px solid #1a2332;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.log-line {
+  font-size: 0.82rem;
+  padding: 4px 10px;
+  border-left: 3px solid transparent;
+  transition: background-color 0.15s ease;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.log-line:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.log-line.INFO { border-left-color: var(--status-normal); }
+.log-line.WARN { border-left-color: var(--status-medium); background: rgba(245, 158, 11, 0.04); }
+.log-line.ERROR { border-left-color: var(--status-critical); background: rgba(239, 68, 68, 0.08); }
+.log-line.FATAL { border-left-color: var(--status-critical); background: rgba(239, 68, 68, 0.15); }
+
+/* Markdown styling inside Gemini modal */
+.markdown-body h3 {
+  font-size: 1.05rem;
+  color: var(--accent-cyan);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+}
+.markdown-body ul, .markdown-body ol {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.markdown-body li {
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+.markdown-body code {
+  font-family: var(--font-mono);
+  background: #090d16;
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  border: 1px solid #1e293b;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-NORMAL { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.badge-LOW { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+.badge-MEDIUM { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-HIGH { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+.badge-CRITICAL { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); animation: pulse-dot 1.5s infinite; }

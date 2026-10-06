@@ -1,0 +1,16 @@
+{
+  "name": "log-monitor-backend",
+  "version": "1.0.0",
+  "description": "Backend API & Streaming Engine for Intelligent Log Monitoring System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
